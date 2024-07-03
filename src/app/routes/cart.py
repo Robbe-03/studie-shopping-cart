@@ -101,11 +101,22 @@ def get_prices_from_cart(products: list[dict[str, int | str]]) -> list[int]:
     return prices
 
 
-def calculate_product_sum_with_discount_util(products: list[dict[str, int | str]]) -> int:
+def calculate_product_sum_with_discount_util(products):
     prices = get_prices_from_cart(products)
-
-    # TODO: Implementieren eines speziellen Rabattes, der die Summe des neuen Warenkorbs berechnet
     total_price = 0
-    for price in prices:
-        total_price += price
+
+    for i in range(len(prices)):
+        current_price = prices[i]
+        discount_applied = False
+
+        # Check for the next cheaper or equally priced product in the remaining list
+        for j in range(i + 1, len(prices)):
+            if prices[j] <= current_price:
+                total_price += current_price - prices[j]
+                discount_applied = True
+                break
+
+        if not discount_applied:
+            total_price += current_price
+
     return total_price

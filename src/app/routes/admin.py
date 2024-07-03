@@ -110,6 +110,10 @@ def get_dynamic_table(orders: list[list[str | int]]) -> list[list[str | int]]:
 
 
 def calculate_row_totals(dynamic_table: list[list[str | int]]) -> list[list[str | int]]:
+    dynamic_table[0].append("Total")
+    for row in dynamic_table[1:]:
+        row_total = sum(row[1:])
+        row.append(row_total)
     return dynamic_table
 
 

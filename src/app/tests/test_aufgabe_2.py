@@ -24,7 +24,7 @@ class TestOrderTable(unittest.TestCase):
         # FIXME expected_outcome anpassen um Test zu fixen: D.h. prüfen, was die Methode get_dynamic_table für den
         #  test_input zurückgibt und hier entsprechend anpassen.
         expected_outcome = [
-            ["Order ID", "B: Test Product", "A: Test Product", "Z: Test Product"],
+            ["Order ID", "A: Test Product", "B: Test Product", "Z: Test Product"],
             [12, 0, 3, 1],
             [1, 2, 0, 0],
             ["Total", 2, 3, 1]
